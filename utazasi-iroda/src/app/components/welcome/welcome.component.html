@@ -1,0 +1,103 @@
+<div class="container-md my-4 shadow">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center my-3">Üdvözöljük oldalunkon</h1>
+
+        <p class="text-center">Az oldalon naprakész információkat talál Csongrád-Csanád megye turisztikai célpontjairól. Kitűnő utazási ajánlatok, válogatott rendezvények és különleges tippek a kikapcsolódáshoz. Csongrád-Csanád megye az a tájegység, ahol különleges élmények, felfedeznivalók és fantasztikus ízek várnak.</p>
+        <p class="text-center" *ngIf="!userData">A linkre kattintva bejelentkezhet az oldalra, ha Ön még nem regisztrált felhasználó, akkor a regisztrációs űrlapot is kitöltheti. - <strong><a class="loginLink" style="color: #ffdc17" routerLink="/login" *ngIf="!isLoggedIn">Bejelentkezés</a></strong></p>
+
+        <p class="text-center">Alábbiakban tájékozódhat az általunk kínált program fajtákról</p>
+        <div class="container my-2">
+          <div class="row">
+            <div class="col-12">
+
+
+
+                <div class="gastro-card rounded shadow my-3 p-4">
+                  <h5 class="">Gasztrotúra</h5>
+                  <p class="">Gasztrotúráinkat úgy állítottuk össze, hogy utasaink garantáltan megismerjék az adott régió különleges alapanyagait, ételeit és italait és felejthetetlen kulináris élményekkel térjenek haza. Ezen útjaink során megkóstolhatják többek között a toszkán borokat, az andalúz tapasokat, az Azori-szigeteki Cozido das Furnast, tipikus mexikói fogásokat vagy a szomszédos Ausztria finom nyalánkságait.</p>
+                  <p class="card-text">Válogasson a jobbnál jobb fogások közül, amelyek elkészítését akár főzőkurzusok keretén belül is el lehet sajátítani!</p>
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="card-container card1 col-sm-6 col-md-3"></div>
+                      <div class="card-container card2 col-sm-6 col-md-3"></div>
+                      <div class="card-container card3 col-sm-6 col-md-3"></div>
+                      <div class="card-container card4 col-sm-6 col-md-3"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="varosnezo-card rounded shadow my-3 p-4">
+                  <h5 class="">Városnéző túra</h5>
+                  <p class="">Megyénkben számos híresség született vagy alkotott. Annak érdekében, hogy a nagy művészek alkotásai a jövő számára is fennmaradjanak, valamint széleskörű közönség csodálhassa meg őket, a megye egyes alkotóknak szentelt, nagy múzeumok, kisebb művészeti intézmények, a zenéhez kapcsolódó emlékhelyek és gyönyörű kilátás vár a tájon, mely csodás teret ad az alkotószellemnek.</p>
+                  <p class="card-text">A városi séták során a múzeumok mellett megtekintjük a helyi nevezetességeket, templomokat is és ellátogatunk a helyi rendezvényekre.</p>
+                  <div class="container">
+                    <div class="row">
+                      <div class="card-container card1 col-sm-6 col-md-3"></div>
+                      <div class="card-container card2 col-sm-6 col-md-3"></div>
+                      <div class="card-container card3 col-sm-6 col-md-3"></div>
+                      <div class="card-container card4 col-sm-6 col-md-3"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bicikli-card rounded shadow my-3 p-4">
+                  <h5 class="">Bicikli túra</h5>
+                  <p class="">A kiválóan kiépített kerékpárutanak köszönhetően mód és lehetőség van nem csak városon belüli rövid kerékpártúrákat tenni, hanem települések közt is biztonságosan tudunk közlekedni</p>
+                  <p class="card-text">Túrákat több korosztálynak is szervezünk, családoknak épp úgy mint akik nagyobb táv megtételére vállalkoznak.</p>
+                  <div class="container">
+                    <div class="row">
+                      <div class="card-container card1 col-sm-6 col-md-3"></div>
+                      <div class="card-container card2 col-sm-6 col-md-3"></div>
+                      <div class="card-container card3 col-sm-6 col-md-3"></div>
+                      <div class="card-container card4 col-sm-6 col-md-3"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="lovas-card rounded shadow my-3 p-4">
+                  <h5 class="">Lovas túra</h5>
+                  <p class="">A ló az alföldi ember legjobb barátja volt mindenkor és a modern korban is kötődünk hozzá. Túráinkat, terplovaglásainkat elsősorban a tapasztal kirándulóknak ajáljuk.</p>
+                  <p class="card-text">Ne csüggedjen az se, aki még nem ült lovon, túravezetőink lovasoktatást is tartanak azok számára, akik megelégednek a lovarda homokjával.</p>
+                  <div class="container">
+                    <div class="row">
+                      <div class="card-container card1 col-sm-6 col-md-3"></div>
+                      <div class="card-container card2 col-sm-6 col-md-3"></div>
+                      <div class="card-container card3 col-sm-6 col-md-3"></div>
+                      <div class="card-container card4 col-sm-6 col-md-3"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="vizi-card rounded shadow my-3 p-4">
+                  <h5 class="">Vizi túra</h5>
+                  <p class="">A Tisza, Maros Kőrös mind-mind gyönyörű tájakon folyik végig, melyet legegyszerűbb egy csónakban ülve megszemlélni.</p>
+                  <p class="card-text">Tapasztalt túravezetőinkkel nem csak egyének, de baráti társaságok, családok is bátran nekivághatnak egy-egy komolyabb távolságú túrának is.</p>
+                  <div class="container">
+                    <div class="row">
+                      <div class="card-container card1 col-sm-6 col-md-3"></div>
+                      <div class="card-container card2 col-sm-6 col-md-3"></div>
+                      <div class="card-container card3 col-sm-6 col-md-3"></div>
+                      <div class="card-container card4 col-sm-6 col-md-3"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="oko-card rounded shadow my-3 p-4">
+                  <h5 class="">Természetjárás/ökoturizmus</h5>
+                  <p class="">Csongrád megye számos természetvédelmi területtel, tájvédelmi körzettel és tanösvénnyel rendelkezik, ahol a túrázók a helyi növény és állatvilággal találkozhatnak, emellett számos védett faj példányait leshetik meg.</p>
+                  <p class="card-text">Túráinkat a helyi madártani intézettel és más természetvédő egyesülettel együttműködve szervezzük meg.</p>
+                  <div class="container">
+                    <div class="row">
+                      <div class="card-container card1 col-sm-6 col-md-3"></div>
+                      <div class="card-container card2 col-sm-6 col-md-3"></div>
+                      <div class="card-container card3 col-sm-6 col-md-3"></div>
+                      <div class="card-container card4 col-sm-6 col-md-3"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    </div>
+  </div>
+</div>

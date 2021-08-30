@@ -1,0 +1,71 @@
+<div class="container-md my-4">
+  <div class="row">
+    <form class="form-group col-md-10 offset-md-1 col-xl-8 offset-xl-2 rounded shadow px-2 px-sm-4 px-md-5" [formGroup]="newUserForm" (ngSubmit)="saveNewUser()">
+      <label class="form-label d-block mt-3" for="last_name">Vezetéknév:</label>
+      <input class="form-control" type="text" id="last_name" formControlName="last_name">
+      <small class="text-warning fw-bold" *ngIf="newUserForm.get('last_name').invalid && newUserForm.controls.last_name.dirty">Valós vezetéknevet kell megadni!</small>
+
+      <label class="form-label d-block mt-3" for="first_name">Keresztnév:</label>
+      <input class="form-control" type="text" id="first_name" formControlName="first_name">
+      <small class="text-warning fw-bold" *ngIf="newUserForm.get('first_name').invalid && newUserForm.controls.first_name.dirty">Valós keresztnevet kell megadni!</small>
+
+      <label class="form-label d-block mt-3" for="email">Email cím:</label>
+      <input class="form-control" type="email" id="email" formControlName="email">
+      <small class="text-warning fw-bold" *ngIf="newUserForm.get('email').invalid && newUserForm.controls.email.dirty">Valós email címet kell megadni!</small>
+
+      <label class="form-label d-block mt-3" for="password">Jelszó:</label>
+      <input class="form-control" type="password" id="password" formControlName="password">
+      <small class="text-warning fw-bold" *ngIf="newUserForm.get('password').invalid && newUserForm.controls.password.dirty">5-30 karakter hosszú jelszót kell megadni!</small>
+
+      <label class="form-label d-block mt-3" for="passwordagain">Jelszó újra:</label>
+      <input class="form-control" type="password" id="passwordagain" formControlName="passwordagain">
+      <small class="text-warning fw-bold" *ngIf="newUserForm.get('passwordagain').invalid && newUserForm.controls.passwordagain.dirty">Az ellenőrző jelszónak azonosnak kell lennie a jelszóval!</small>
+
+      <label class="form-label d-block mt-3" for="age">Életkor:</label>
+      <input class="form-control" type="number" id="age" formControlName="age">
+      <small class="text-warning fw-bold" *ngIf="newUserForm.get('age').invalid && newUserForm.controls.age.dirty">Egész számot kell megadni 19 és 99 év között!</small>
+
+      <label class="form-label d-block mt-3" for="gender">Nem:</label>
+      <select class="form-select"  id="gender" formControlName="gender">
+        <option value="férfi">férfi</option>
+        <option value="nő">nő</option>
+        <option value="köztes">köztes</option>
+      </select>
+      <small class="text-warning fw-bold" *ngIf="newUserForm.get('gender').invalid && newUserForm.controls.gender.touched">Választani kell egy nemet!</small>
+
+      <label class="form-label d-block mt-3" for="city">Város:</label>
+      <input class="form-control" type="text" id="city" formControlName="city">
+      <small class="text-warning fw-bold" *ngIf="newUserForm.get('city').invalid && newUserForm.controls.city.dirty">Valós városnevet kell megadni!</small>
+
+      <label class="form-label d-block mt-3" for="street">Közterület (utca, tér stb.):</label>
+      <input class="form-control" type="text" id="street" formControlName="street">
+      <small class="text-warning fw-bold" *ngIf="newUserForm.get('street').invalid && newUserForm.controls.street.dirty">Valós közterület elnevezést kell megadni!</small>
+
+      <label class="form-label d-block mt-3" for="houseNumber">Házszám:</label>
+      <input class="form-control" type="number" id="houseNumber" formControlName="houseNumber">
+      <small class="text-warning fw-bold" *ngIf="newUserForm.get('houseNumber').invalid && newUserForm.controls.houseNumber.dirty">Egész számot kell megadni!</small>
+
+      <label class="form-label d-block mt-3" for="zip">Irányítószám:</label>
+      <input class="form-control" type="number" id="zip" formControlName="zip">
+      <small class="text-warning fw-bold" *ngIf="newUserForm.get('zip').invalid && newUserForm.controls.zip.dirty">Négyjegyű számot kell megadni!</small>
+
+      <label class="form-label d-block mt-3" for="image">Fénykép (URL):</label>
+      <input class="form-control" type="text" id="image" formControlName="image">
+      <small class="text-warning fw-bold" *ngIf="newUserForm.get('image').invalid && newUserForm.controls.image.dirty">Helyes url címet kell megadni!</small>
+
+      <div class="btn-group mt-3 mb-5 col-lg-8 col-xl-6 mx-auto">
+        <div class="btn btn-left my-1 py-3">
+          <button class="btn-inner d-block" [disabled]="newUserForm.invalid"><p class="d-block mt-1">Mentés</p></button>
+        </div>
+        <div class="btn py-3 btn-right my-1" routerLink="/login">
+          <div class="btn-inner">
+            <a  class="">Ugrás a Login oldalra</a>
+          </div>
+        </div>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>

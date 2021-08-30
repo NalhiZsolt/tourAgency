@@ -1,0 +1,10 @@
+@use '../../../assets/mixins' as m;
+
+.container-fluid, h2 {
+  @include m.glassContainer();
+}
+
+img {
+  width: 100%
+}
+

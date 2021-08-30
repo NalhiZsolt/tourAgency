@@ -1,0 +1,112 @@
+<section class="profil-wrapper">
+  <div class="container-md my-4 shadow">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="container mt-3">
+          <div class="row">
+            <div class="col-12 personelDataSheet rounded shadow pt-3" *ngIf="loggedInUserData">
+              <div class="profil-img">
+                <img class="d-block mx-auto" [src]="loggedInUserData.image" alt="">
+              </div>
+              <table class="table mt-4">
+                <tr class="">
+                  <td class="col-6"><strong> Vezetéknév:</strong></td>
+                  <td class="col-6">
+                    {{loggedInUserData.last_name}}
+                  </td>
+                </tr>
+              </table>
+              <hr>
+              <table class="table">
+                <tr class="">
+                  <td class="col-6"><strong>Keresztnév:</strong></td>
+                  <td class="col-6">
+                    {{loggedInUserData.first_name}}
+                  </td>
+                </tr>
+              </table>
+              <hr>
+              <table class="table">
+                <tr class="">
+                  <td class="col-6"><strong>Email cím:</strong></td>
+                  <td class="col-6">
+                    {{loggedInUserData.email}}
+                  </td>
+                </tr>
+              </table>
+              <hr>
+              <table class="table">
+                <tr class="">
+                  <td class="col-6"><strong>Lakcím:</strong></td>
+                  <td class="col-6">
+                    {{loggedInUserData.city}} <br>
+                    {{loggedInUserData.street}} {{loggedInUserData.houseNumber}} <br>
+                    {{loggedInUserData.zip}}
+
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="container mt-2">
+          <div class="row">
+            <form class="col-12 form-group mt-2 p-4" [formGroup]="passwordForm" (ngSubmit)="changePassword()">
+              <fieldset>
+                <legend>Jelszó csere</legend>
+
+                <label class="d-block form-label" for="password">Jelszó:</label>
+                <input class="form-control" type="password" id="password" formControlName="password">
+                <small class="text-warning fw-bold"
+                  *ngIf="passwordForm.get('password').invalid && passwordForm.controls.password.dirty">Hibás jelszó!</small>
+
+                <label class="d-block form-label" for="passwordagain">Jelszó újra:</label>
+                <input class="form-control" type="password" id="passwordagain" formControlName="passwordagain">
+                <small class="text-warning fw-bold"
+                  *ngIf="passwordForm.get('passwordagain').invalid && passwordForm.controls.passwordagain.dirty">Nem egyezik a jelszóval!</small>
+                <div class="btn mt-3 d-block" >
+                  <button [disabled]="passwordForm.invalid" class="btn btn-inner py-4"> <p>Jelszó csere</p>
+
+                  </button>
+                </div>
+
+              </fieldset>
+            </form>
+
+            <form class="col-12 form-group my-2 p-4" [formGroup]="emailForm" (ngSubmit)="changeEmail()">
+              <fieldset>
+                <legend>Email csere</legend>
+                <label class="d-block form-label" for="email">Új email cím:</label>
+                <input class="form-control" type="email" id="email" formControlName="email">
+                <small class="text-warning fw-bold"
+                  *ngIf="emailForm.get('email').invalid && emailForm.controls.email.dirty">Hibás jelszó megadás!</small>
+                  <div class="d-block btn mt-3" >
+                    <button [disabled]="emailForm.invalid" class="btn btn-inner py-4"> <p>Email csere</p>
+                    </button>
+                  </div>
+              </fieldset>
+            </form>
+
+            <form class="col-12 form-group mb-4 p-4" [formGroup]="imageForm" (ngSubmit)="changeImage()">
+              <fieldset>
+                <legend>Profil kép csere</legend>
+                <label class="d-block form-label" for="image">Új profil kép url-je:</label>
+                <input class="form-control" type="text" id="image" formControlName="image">
+                <small class="text-warning fw-bold"
+                  *ngIf="imageForm.get('image').invalid && imageForm.controls.image.dirty">helytelen URL!</small>
+
+                  <div class="d-block btn mt-3" >
+                    <button [disabled]="imageForm.invalid" class="btn btn-inner py-4"><p>Fénykép csere</p>
+                    </button>
+                  </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

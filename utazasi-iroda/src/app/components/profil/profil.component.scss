@@ -1,0 +1,89 @@
+@use '../../../assets/mixins' as m;
+
+.container-md, .personelDataSheet, input {
+  @include m.glassContainer();
+}
+
+
+.btn {
+  width: 150px;
+  height: 40px;
+  position: relative;
+  color: whitesmoke;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  font-weight: 400;
+  transition: 0.2s;
+  margin: 0 1px;
+  overflow: hidden;
+
+}
+.btn-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn .btn-inner p {
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+  color: whitesmoke;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.btn:hover .btn-inner p {
+  color: #222;
+  text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+
+}
+.btn .btn-inner {
+  @include m.glassContainer();
+  border-radius: 0 !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255,255,255,0.2), transparent);
+  transform: skew(45deg) translateX(0);
+  transition: 0.3s;
+
+}
+.btn:hover .btn-inner {
+  border: 1px solid rgba(168, 149, 149, 0.5);
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.3);
+}
+.btn:hover .btn-inner::before {
+  transform: skew(45deg) translateX(200%);
+}
+
+.profil-img img{
+  max-height: 250px;
+}
+form {
+  border: 1px solid rgba(168, 149, 149, 0.7);
+  border-radius: 10px;
+}
+td {
+  color: whitesmoke !important;
+  text-align: left !important;
+}
+hr {
+  width: 100%
+}
+

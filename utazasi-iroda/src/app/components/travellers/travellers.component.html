@@ -1,0 +1,96 @@
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-scrollable">
+    <div class="modal-content" *ngIf="selectedTraveller">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{selectedTraveller.last_name}} {{selectedTraveller.first_name}}</h5>
+        <button type="button" class="btn-close btn-close-white btn " data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body ">
+
+        <table class="col-10 offset-1">
+          <tr>
+            <td class="customerImageContainer" colspan="2">
+
+              <img [src]="selectedTraveller.image" alt="">
+            </td>
+          </tr>
+          <tr>
+            <td class="col-5">Vezetéknév:</td>
+            <td class="col-7">{{selectedTraveller.last_name}}</td>
+          </tr>
+          <tr>
+            <td class="col-5">Keresztnév:</td>
+            <td class="col-7">{{selectedTraveller.first_name}}</td>
+          </tr>
+          <tr>
+            <td class="col-5">Életkor:</td>
+            <td class="col-7">{{selectedTraveller.age}}</td>
+          </tr>
+          <tr>
+            <td class="col-5">Nem:</td>
+            <td class="col-7">{{selectedTraveller.gender}}</td>
+          </tr>
+          <tr>
+            <td class="col-5">Szerepkör:</td>
+            <td class="col-7">{{selectedTraveller.role}}</td>
+          </tr>
+        </table>
+        <div class="address col-10 offset-1">
+          <h6>Cím:</h6>
+          <p>{{selectedTraveller.city}}</p>
+          <p>{{selectedTraveller.street}} {{selectedTraveller.houseNumber}}</p>
+          <p>{{selectedTraveller.zip}}</p>
+        </div>
+
+        <div class="p-2">
+          <h6>Utazások</h6>
+          <table>
+
+              <tr *ngFor="let tour of tourList; let i = index">
+                <td class="col-1">{{i + 1}}</td>
+                <td class="col-5">
+                  <div class="travel-image" [ngStyle]="{'background': 'url('+ tour.image +')  center center no-repeat', 'background-size': 'cover', 'background-color': '#555555'}">
+                  </div>
+                </td>
+                <td class="col-6 p-4">{{tour.tour_title}}<br>{{tour.tour_start}}<br>{{tour.tour_end}}</td>
+              </tr>
+
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-closeButton" data-bs-dismiss="modal" >Bezár</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-md shadow rounded-bottom my-4 py-3">
+  <div class="row">
+    <h3 class="col-12 text-center py-2">Regisztrált utasaink</h3>
+    <div class="col-12  " *ngFor="let traveller of travellers; let i = index">
+      <div class="container-fluid " >
+        <div class="row my-2 traveller-container rounded shadow p-1">
+          <div class="col-1 numero">{{i+1}}</div>
+          <div class="col-12 col-lg-3 text-center">{{traveller.last_name}} {{traveller.first_name}}</div>
+          <div class="col-12 col-lg-3 text-center">{{traveller.email}}</div>
+          <div class="col-lg-2 image-container">
+            <img class="traveller-image" [src]="traveller.image" alt="">
+          </div>
+          <div class="btn-group col-8 mx-auto col-lg-3 my-1">
+            <div class="btn py-3 d-block" (click)="detailedTraveller(traveller)" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+            <div class="btn-inner">
+              <a class="" >Részletek</a>
+            </div>
+            </div>
+            <div class="btn py-3" (click)="deleteTraveller(traveller)">
+            <div class="btn-inner">
+              <a class="">Törlés</a>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

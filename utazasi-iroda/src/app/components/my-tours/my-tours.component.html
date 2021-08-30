@@ -1,0 +1,96 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" *ngIf="selectedTour">{{selectedTour.tour_title}}</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img *ngIf="selectedTour" style="width: 100%;" [src]="selectedTour.image" alt="">
+
+        <div class="p-2">
+          <h6 *ngIf="selectedTour">Esemény időpontja: {{selectedTour.tour_start}} - {{selectedTour.tour_end}}</h6>
+          <p *ngIf="selectedTour">{{selectedTour.tour_description}}</p>
+          <p *ngIf="selectedTour">{{selectedTour.tour_description2}}</p>
+          <p *ngIf="selectedTour">{{selectedTour.tour_description3}}</p>
+        </div>
+        <div class="modal-footer">
+          <div class="btn-group">
+            <button class="btn btn-closeButton" data-bs-dismiss="modal">Bezár</button>
+            <button class="btn" data-bs-dismiss="modal" (click)="deleteTour(selectedTour)">Törlés</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-scrollable">
+    <div class="modal-content" *ngIf="selectedTour">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" *ngIf="selectedTour">{{selectedTour.tour_title}}</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body ">
+        <h6>Esemény időpontja: {{selectedTour.tour_start}} - {{selectedTour.tour_end}}</h6>
+
+        <div class="p-2">
+          <table>
+
+            <tr *ngFor="let traveller of travellerList; let i = index">
+              <td class="col-1">{{i + 1}}</td>
+              <td class="col-4">
+                <div *ngIf="travellerList" class="customer-image">
+                  <img *ngIf="travellerList" [src]="traveller.image" alt="">
+                </div>
+              </td>
+              <td class="col-7 p-4" *ngIf="travellerList">
+                {{traveller.first_name}}<br>{{traveller.city}}<br>{{traveller.email}}</td>
+            </tr>
+
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-closeButton" data-bs-dismiss="modal">Bezár</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-md my-4">
+  <div class=" row">
+    <h2 class="col-12 text-center mt-3 mb-2">Túráim</h2>
+
+    <div class="col-12 mx-auto px-3 tour-row py-3" *ngFor="let tour of myToursList; let i = index">
+      <div class="container py-2 rounded shadow">
+        <div class="row dataWrapper">
+          <div class="col-lg-3 tour-image"
+            [ngStyle]="{'background': 'url('+ tour.image +')  center center no-repeat', 'background-size': 'cover', 'background-color': '#555555'}">
+          </div>
+
+          <p class="col-5 col-lg-2 text-center">{{tour.tour_title}}</p>
+          <p class="text-center col-3 col-lg-2">{{tour.tour_start}}</p>
+          <p class="text-center col-3 col-lg-2">{{tour.tour_end}}</p>
+
+          <div class="btn-group col-12 mx-auto col-md-10 col-lg-3">
+            <div class="btn btn-details py-3 px-1" (click)="selectTour(tour)" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">
+              <div class="btn-inner">
+                <a class="">Részletek</a>
+              </div>
+            </div>
+            <div class="btn btn-travellers py-3 px-3" data-bs-toggle="modal" data-bs-target="#exampleModal2"
+              (click)="tourTravellers(tour)">
+              <div class="btn-inner">
+                <a class="">Utastársak</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

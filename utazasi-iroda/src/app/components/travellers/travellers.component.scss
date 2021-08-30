@@ -1,0 +1,95 @@
+@use '../../../assets/mixins' as m;
+
+.container-md, .traveller-container, .modal-content {
+
+  @include m.glassContainer();
+}
+.btn {
+  position: relative;
+  color: whitesmoke;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  font-weight: 400;
+  transition: 0.2s;
+  margin: 0 1px;
+  overflow: hidden;
+}
+.btn a {
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+  color: whitesmoke;
+  text-decoration: none;
+  transition: 0.2s;
+}
+.btn:hover a {
+  color: #222;
+  text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+
+}
+.btn .btn-inner {
+  @include m.glassContainer();
+  border-radius: 0 !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255,255,255,0.2), transparent);
+  transform: skew(45deg) translateX(0);
+  transition: 0.3s;
+
+}
+.btn:hover .btn-inner {
+  border: 1px solid rgba(255,255,255,0.5);
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.3);
+}
+.btn:hover .btn-inner::before {
+  transform: skew(45deg) translateX(200%);
+}
+.traveller-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container {
+  margin: 0 auto;
+  text-align: center;
+
+}
+.traveller-image {
+  display: block;
+  margin: 0 auto;
+  max-height: 200px;
+}
+
+.travel-image {
+  height: 120px;
+  width: 200;
+}
+.numero {
+  display: none !important;
+}
+@media only screen and (min-width: 993px) {
+  .traveller-image {
+    display: block;
+    height: 100px;
+  }
+  .numero {
+    display: block !important;
+  }
+}

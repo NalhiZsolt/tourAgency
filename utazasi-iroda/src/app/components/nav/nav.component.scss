@@ -1,0 +1,175 @@
+
+.header-img1 {
+  height: 250px;
+  width: 100%;
+  background-image: url(../../../assets/img/opusztaszer_header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden;
+}
+.header-img2 {
+  height: 250px;
+  width: 100%;
+  background-image: url(../../../assets/img/csongrad_header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden;
+}
+.header-img3 {
+  height: 250px;
+  width: 100%;
+  background-image: url(../../../assets/img/hmvhely_header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden;
+}
+.header-img4 {
+  height: 250px;
+  width: 100%;
+  background-image: url(../../../assets/img/mako_header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden;
+}
+.header-img5 {
+  height: 250px;
+  width: 100%;
+  background-image: url(../../../assets/img/morahalom_header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden;
+}
+.header-img6 {
+  height: 250px;
+  width: 100%;
+  background-image: url(../../../assets/img/szeged_header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden;
+}
+.header-img7 {
+  height: 250px;
+  width: 100%;
+  background-image: url(../../../assets/img/szentes_header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden;
+}
+
+.header-image {
+  height: 250px;
+  width: 100%;
+  background-image: url();
+}
+.navbar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  z-index: 100;
+}
+
+.carousel-caption h2 {
+  font-size: 1.5rem !important;
+  font-style: italic;
+  text-decoration: underline;
+  color: #ffdc17;
+  text-shadow: 2px 2px 2px #222;
+  text-align: right;
+}
+
+.navbar-brand {
+    color: #ffdc17;
+    user-select: none;
+}
+
+@media only screen and (min-width: 993px) {
+
+  .nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .sayhi {
+    text-align: center;
+  }
+}
+
+
+.nav-item .nav-link {
+    margin-top: auto;
+    --padding: 12px;
+
+    position: relative;
+    width: max-content;
+    text-align: center;
+
+    &:hover {
+        color: #ffdc17;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -12px;
+      width: calc(var(--padding) + 100%);
+      height: 3px;
+      transform: scaleX(0);
+      transform-origin: right;
+      background-color: #ffdc17;
+      transition: transform .2s ease-in;
+    }
+
+}
+.nav-item:hover .nav-link::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.carousel-wrapper {
+  display: none !important;
+}
+@media only screen and (min-width: 993px) {
+
+  .carousel-wrapper {
+    display: block !important;
+  }
+
+}
+
+
+@media only screen and (min-width: 993px) {
+  .nav-item .nav-link {
+    width: 100%;
+    position: relative;
+  }
+  .nav-item .nav-link::after {
+    left: 0;
+    width: 100%;
+  }
+
+}
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    border-radius: 50%;
+    background: #ffdc17;
+
+}
+.login, .logout {
+  cursor: pointer;
+}
+
+.sayhi {
+  user-select: none;
+}
+.nav-item:hover .sayhi::after {
+  transform: scaleX(0);
+}

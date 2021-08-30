@@ -1,0 +1,86 @@
+<!-- Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{selectedTour.tour_title}}</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body ">
+        <img style="width: 100%;" [src]="selectedTour.image" alt="">
+        <div class="p-2">
+          <h6>Esemény időpontja: {{localeDate}} - {{localeDate2}}</h6>
+          <h6>Esemény helyszíne: {{selectedTour.tour_location}}</h6>
+          <p>{{selectedTour.tour_description}}</p>
+          <p>{{selectedTour.tour_description2}}</p>
+          <p>{{selectedTour.tour_description3}}</p>
+
+        </div>
+        <div class="modal-footer">
+          <div class="btn-group">
+            <button type="button" class="btn btn-closeButton" data-bs-dismiss="modal"
+              (click)="close()">Bezár</button>
+            <button type="button" class="btn btn-interest" [disabled]="buttonDisable" [disabled]="!isLoggedIn"
+              data-bs-dismiss="modal" (click)="saveTour(selectedTour)">Érdekel</button>
+          </div>
+          <span *ngIf="buttonDisable && isLoggedIn"
+            class="text-light text-center mx-auto d-block text-decoration-underline text-bolder"><strong>Erre az
+              eseményre már feliratkozott korábban!</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="actualTravelsMenu container-md my-4">
+  <div class="row">
+    <div class="form-group col-md-8 mb-3 d-flex flex-column flex-sm-row mx-auto mt-5" [formGroup]="formCategory">
+      <label class="tourType form-label me-3 mt-1 text-center col-md-2" for="category">Túra tipusa:</label>
+      <select class="form-select p-1" id="category" formControlName="category" aria-label="Floating label select">
+        <option value="">Összes kategória</option>
+        <option *ngFor="let elem of this.categoriesList" [value]="elem.value">
+          {{elem.name}}
+        </option>
+      </select>
+      <div class="d-flex justify-content-center col-sm-3 col-md-3 " >
+        <div class="btn filter-button ms-2 my-2 my-sm-0 py-3 mx-auto" (click)="selectCategory()" type="submit">
+          <div class="btn-inner">
+            <a class="d-block" >Szűrés</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="table-container mx-auto my-5 p-2 " *ngFor="let category of currentCategory">
+        <h5 class="text-center">{{category.name}}</h5>
+        <hr class="mb-1">
+        <table class="col-12">
+          <tr *ngFor="let tour of eventArray">
+            <td class="py-2" (mouseover)="changeImage(tour)" (mouseout)="cleanImage()"
+              [ngStyle]="tour.tour_type == category.value ? {'display': 'block'} : {'display': 'none' }"
+              data-bs-toggle="modal" data-bs-target="#exampleModal"
+              (click)="currentTour(tour)">
+              <h6 class="col-12 text-center">{{tour.tour_title}}</h6>
+
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class=" col-md-6 mt-md-5 mt-lg-5 mb-3">
+      <div class="left-side rounded shadow mx-2 p-4" *ngIf="actualImage">
+        <div class="img-container"
+          [ngStyle]="{'background': 'url('+ actualImage +')  center center no-repeat', 'background-size': 'cover', 'background-color': '#555555'}">
+          <div class="left-side-map">
+            <img [src]="actualMap" alt="">
+          </div>
+        </div>
+        <h5 class="text-center mt-2">Időpont: {{actualStart}} - {{actualEnd}}</h5>
+        <h6 class="text-center">Helyszín: {{actualLocation}}</h6>
+
+      </div>
+    </div>
+  </div>
+</div>

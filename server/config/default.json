@@ -1,0 +1,9 @@
+{
+    "database": {
+        "dbType": "mongodb+srv://",
+        "username": "Zsolt",
+        "password": "Regruta1",
+        "host": "playgroundprojectcluste.rl2pd.mongodb.net/tour-agency?retryWrites=true&w=majority"
+    },
+    "port": 3000
+}

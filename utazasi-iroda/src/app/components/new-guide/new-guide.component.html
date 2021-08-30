@@ -1,0 +1,38 @@
+
+<div class="container-md my-4">
+  <div class="row">
+    <div class="new-tour col-12 col-md-8 mx-auto shadow rounded-bottom px-0 mb-4">
+      <h3 class="text-center col-12 p-0 mt-3">Új túravezető felvétele</h3>
+      <form class="form-group col-10 rounded shadow mx-auto px-5 py-3 mb-5" [formGroup]="newGuideForm" (ngSubmit)="saveNewGuide()">
+        <label class="form-label d-block mt-3" for="last_name">Vezetéknév:</label>
+        <input class="form-control" type="text" id="last_name" formControlName="last_name">
+        <small class="text-warning fw-bold" *ngIf="newGuideForm.get('last_name').invalid && newGuideForm.controls.last_name.dirty">Valós vezetéknév szükséges!</small>
+
+        <label class="form-label d-block mt-3" for="first_name">Keresztnév:</label>
+        <input class="form-control" type="text" id="first_name" formControlName="first_name">
+        <small class="text-warning fw-bold" *ngIf="newGuideForm.get('first_name').invalid && newGuideForm.controls.first_name.dirty">Valós keresztnév szükséges!</small>
+
+        <label class="form-label d-block mt-3" for="age">Életkor:</label>
+        <input class="form-control" type="number" id="age" formControlName="age">
+        <small class="text-warning fw-bold" *ngIf="newGuideForm.get('age').invalid && newGuideForm.controls.age.dirty">Életkor 18 - 99 között!</small>
+
+        <label class="form-label d-block mt-3" for="image">Fénykép:</label>
+        <input class="form-control" type="text" id="image" formControlName="image">
+        <small class="text-warning fw-bold" *ngIf="newGuideForm.get('image').invalid && newGuideForm.controls.image.dirty">Valós url szükséges!</small>
+
+        <label class="form-label d-block mt-3" for="description1">Bemutatkozás:</label>
+        <input class="form-control" type="text" id="description1" formControlName="description1">
+        <small class="text-warning fw-bold" *ngIf="newGuideForm.get('description1').invalid && newGuideForm.controls.description1.dirty">Rendes bemutatkozó leírás szükséges!</small>
+
+        <label class="form-label d-block mt-3" for="description2">Bemutatkozás:</label>
+        <input class="form-control" type="text" id="description2" formControlName="description2">
+        <small class="text-warning fw-bold" *ngIf="newGuideForm.get('description2').invalid && newGuideForm.controls.description2.dirty">Rendes bemutatkozó leírás szükséges!</small>
+
+        <div class="btn mt-3" >
+          <button [disabled]="newGuideForm.invalid" class="btn btn-inner py-4"><p class="mt-1">Mentés</p>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

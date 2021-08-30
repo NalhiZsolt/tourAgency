@@ -1,0 +1,35 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "docker:build": "docker build -t utazas:latest .",
+    "docker:run": "docker run -p 3000:3000 utazas",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "config": "^3.3.6",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.2",
+    "mongoose-id-validator": "^0.6.0",
+    "morgan": "^1.10.0",
+    "swagger-ui-express": "^4.1.6",
+    "winston": "^3.3.3",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "jest-mock-req-res": "^1.0.2",
+    "supertest": "^6.1.4"
+  }
+}

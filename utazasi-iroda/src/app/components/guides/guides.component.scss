@@ -1,0 +1,112 @@
+@use '../../../assets/mixins' as m;
+
+.container-md, .rounded, .modal-content {
+  @include m.glassContainer();
+}
+.rounded {
+  overflow: hidden;
+}
+.btn-guide-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-guide {
+  width: 100%
+}
+.btn {
+
+  position: relative;
+  color: whitesmoke;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  font-weight: 400;
+  transition: 0.2s;
+  margin: 0 1px;
+  overflow: hidden;
+}
+.btn a {
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+  color: whitesmoke;
+  text-decoration: none;
+  transition: 0.2s;
+}
+.btn:hover a {
+  color: #222;
+  text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+
+}
+.btn .btn-inner {
+  @include m.glassContainer();
+  border-radius: 0 !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255,255,255,0.2), transparent);
+  transform: skew(45deg) translateX(0);
+  transition: 0.3s;
+
+}
+.btn:hover .btn-inner {
+  border: 1px solid rgba(255,255,255,0.5);
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.3);
+}
+.btn:hover .btn-inner::before {
+  transform: skew(45deg) translateX(200%);
+}
+
+
+.new-tour {
+  background-color: #fefefe90;
+}
+.guide-image {
+  max-height: 200px;
+  margin: 0 auto;
+}
+.guide-image img {
+  height: 100%;
+}
+.guide-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dataWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.guide-image img {
+  height: 100px
+}
+
+@media only screen and (min-width: 768px) {
+  .guide-image {
+    display: block;
+    height: 100px;
+  }
+  .guide-row {
+    flex-direction: row;
+  }
+}

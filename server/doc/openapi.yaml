@@ -1,0 +1,921 @@
+openapi: 3.0.0
+
+info:
+  title: Utazz velünk swagger
+  description: Utazz velünk server description
+  version: "1.0"
+  
+  contact:
+    name: Nálhi Zsolt
+    email: nalhizsolt@gmail.com
+  
+servers: 
+  - url: http://localhost:3000
+    description: Utazz velünk server url
+  - url: https://utazas.herokuapp.com
+    description: deployed server
+
+paths:
+  /descriptions:
+    get:
+      summary: return a description list
+      description: this end point responsible for listing cities and regions descriptions
+      tags:
+        - Getting descriptions
+      responses:
+        '200':
+          description: get list in JSON format
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    value:
+                      type: string
+                    name:
+                      type: string
+                    description1:
+                      type: string
+                    description2:
+                      type: string
+                    description3:
+                      type: string
+                    header1:
+                      type: string
+                    header2:
+                      type: string
+                    header3:
+                      type: string
+                    img1:
+                      type: string
+                    img2:
+                      type: string
+                    img3:
+                      type: string
+        '500':
+          $ref: '#/components/responses/InternalServerError'              
+                      
+#----------------------------------------------------------------------------
+# tours
+
+  /tours:
+    get:
+      summary: return the list of all tour
+      description: this end point is responsible for listing the tours
+      tags:
+        - Getting tours
+      responses:
+        '200':
+          description: get list in JSON format
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/tourModel'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    
+    post:
+      summary: this method save a new tour
+      description: calling this end-point has to send a JSON object (new tour) and wait for http status 201
+      tags:
+        - Save new tour
+      security:
+        - bearerAuth: []
+      requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saveTourModel'
+          required: true
+      
+      responses:
+        '201':
+          description: status 201 response, sent back just an empty object
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'                
+                      
+  /tours/{id}:
+    get:
+      summary: Return with a tour
+      description: This end point responsible for give back a tour by ID from url
+      tags:
+        - Get tour by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: get a traveller object if founds by ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tourModel'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    put:
+      summary: this method update a tour
+      description: calling this end-point has to send a JSON object (modified traveller) and wait for http status 200
+      tags:
+        - Modify a tour
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saveTourModel'
+          required: true
+      
+      responses:
+        '200':
+          description: status 200, response sent back just an empty object with status code
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    delete:
+      summary: delete a tour by id
+      description: search a tour by id from path and remove it from the database.
+      tags:
+        - Delete tour by id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: status 200, tour has been deleted. Just send back the status code
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'   
+
+#----------------------------------------------------------------------------------------
+# travellers
+
+  /travellers:
+    get:
+      summary: return the list of all registered traveller
+      description: this end point is responsible for listing the travellers
+      tags:
+        - Getting travellers
+      responses:
+        '200':
+          description: get list in JSON format
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/travellerModel'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    
+    post:
+      summary: this method save a new traveller
+      description: calling this end-point has to send a JSON object (new traveller) and wait for http status 201
+      tags:
+        - Save new traveller
+      requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saveTravellerModel'
+          required: true
+      
+      responses:
+        '201':
+          description: status 201 response, sent back just an empty object
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+        '500':
+          $ref: '#/components/responses/InternalServerError'               
+                      
+  /travellers/{id}:
+    get:
+      summary: Return with a traveller
+      description: This end point responsible for give back a traveller by ID from url
+      tags:
+        - Get traveller by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: get a traveller object if founds by ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/travellerModel'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    put:
+      summary: this method update a traveller
+      description: calling this end-point has to send a JSON object (modified traveller) and wait for http status 200
+      tags:
+        - Modify a traveller
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saveTravellerModel'
+          required: true
+      
+      responses:
+        '200':
+          description: status 200, response sent back just an empty object with status code
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    delete:
+      summary: delete a traveller by id
+      description: search a traveller by id from path and remove it from the database.
+      tags:
+        - Delete traveller by id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: status 200, traveller has been deleted. Just send back the status code
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /travellers/{id}/password:
+    put:
+      summary: this method update a traveller's password
+      description: calling this end-point has to send a JSON object (modified traveller) and wait for http status 200
+      tags:
+        - Modify a traveller's password
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saveTravellerModel'
+          required: true
+      
+      responses:
+        '200':
+          description: status 200, response sent back just an empty object with status code
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+#----------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------
+# guides
+
+  /guides:
+    get:
+      summary: return the list of all registered guide
+      description: this end point is responsible for listing the guides
+      tags:
+        - Getting guides
+      responses:
+        '200':
+          description: get list in JSON format
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/guideModel'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    
+    post:
+      summary: this method save a new guide
+      description: calling this end-point has to send a JSON object (new guide) and wait for http status 201
+      tags:
+        - Save new guide
+      security:
+        - bearerAuth: []
+      requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saveGuideModel'
+          required: true
+      
+      responses:
+        '201':
+          description: status 201 response, sent back just an empty object
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'               
+                      
+  /guides/{id}:
+    get:
+      summary: Return with a guide
+      description: This end point responsible for give back a guide by ID from url
+      tags:
+        - Get guide by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: get a guide object if founds by ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/guideModel'
+              
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    put:
+      summary: this method update a guide
+      description: calling this end-point has to send a JSON object (modified guide) and wait for http status 200
+      tags:
+        - Modify a guide
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saveGuideModel'
+          required: true
+      
+      responses:
+        '200':
+          description: status 200, response sent back just an empty object with status code
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError' 
+
+    delete:
+      summary: delete a guide by id
+      description: search a guide by id from path and remove it from the database.
+      tags:
+        - Delete guide by id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: status 200, guide has been deleted. Just send back the status code
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError' 
+#----------------------------------------------------------------------------------------
+  /login:
+    post:
+      summary: With this method you can login
+      description: calling this end-point has to send an email and a password and wait for http status 201, accessToken, refreshToken and logged in user\'s id, first name and user\'s role
+      tags:
+        - Login with registered user
+      requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loginModel'
+          required: true
+      
+      responses:
+        '200':
+          description: status 200 response, sent back just an empty object
+          content:
+            application/json:
+              schema:
+                type: object 
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        
+  /refresh:
+    post:
+      summary: With this method you can refresh your accessToken
+      description: calling this end-point has to send a valid refreshToken and wait for http status 201 and a new accessToken
+      tags:
+        - Refresh accessToken with logged in user
+      requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/refreshModel'
+          required: true
+      
+      responses:
+        '200':
+          description: status 200 response, sent back just an empty object
+          content:
+            application/json:
+              schema:
+                type: object
+
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+
+         
+  /logout:
+    post:
+      summary: With this method you can logout
+      description: calling this end-point you send the actual refreshToken and wait for http status 201, this refreshToken will be deleted from refreshTokenList
+      tags:
+        - Logout
+      requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/refreshModel'
+          required: true
+      
+      responses:
+        '200':
+          description: status 200 response, sent back just an empty object
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+
+
+#-------------------------------------------------------------------------------------------                
+components:
+  responses:
+    UnauthorizedError:
+      description: Access token for authorisation is missing
+
+    ForbiddenError:
+      description: Access token is invalid!
+
+    InternalServerError:
+      description: Internal server error
+      content: 
+        application/json:
+          schema: 
+            $ref: '#/components/schemas/GlobalError'
+
+    BadRequest:
+      description: Request body is missing required parameters
+      content: 
+        application/json:
+          schema: 
+            $ref: '#/components/schemas/GlobalError'
+
+    NotFound:
+      description: requested item was not found
+      content:
+        application/json:
+          schema: 
+            $ref: '#/components/schemas/GlobalError'
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+
+
+  schemas:
+    GlobalError:
+      required:
+        - hasError
+        - message
+      properties:
+        hasError: 
+          type: boolean
+        message:
+          type: string
+      example:
+        Error: 'Something went wrong.'
+    
+#######    
+    tourModel:
+      type: object
+      required:
+        - id
+        - tour_title
+        - tour_type
+          
+      properties: 
+        _id:
+          type: string
+        tour_title: 
+          type: string
+        tour_description:
+          type: string
+        tour_description2:
+          type: string
+        tour_description3: 
+          type: string
+        tour_type: 
+          type: string
+        tour_location:
+          type: string
+        tour_start:
+          type: string
+        tour_end:
+          type: string
+        travellers:
+          items:
+            type: string
+        guide: 
+          type: string
+        image: 
+          type: string
+          
+      example:
+        _id: 6106726d4545d736b072c1ed
+        tour_title: Zempléni gyalogtúra
+        tour_description: Kellemes, egész napos kirándulás a Zemplén erdeiben
+        tour_description2: Indulás reggel, ebéd valahol, érkezés este
+        tour_description3: Mindenki eredei túrának megfelelő öltözékben jöjjön!
+        tour_type: ökotúra
+        tour_location: Zemplém megye
+        tour_start: "2021-09-03T06:00:00.000Z"
+        tour_end: "2021-09-03T22:00:00.000Z"
+        travellers: []
+        guide: 60ff40193d9e93055c6c0339
+        image: http://image.jpg
+
+#######
+    saveTourModel:
+      type: object
+      required:
+        - tour_title
+        - tour_type
+      properties: 
+        _id:
+          type: string
+        tour_title: 
+          type: string
+        tour_description:
+          type: string
+        tour_description2:
+          type: string
+        tour_description3: 
+          type: string
+        tour_type: 
+          type: string
+        tour_location:
+          type: string
+        tour_start:
+          type: string
+        tour_end:
+          type: string
+        travellers:
+          items:
+            type: string
+        guide: 
+          type: string
+        image: 
+          type: string
+          
+      example:
+        tour_title: Zempléni gyalogtúra
+        tour_description: Kellemes, egész napos kirándulás a Zemplén erdeiben
+        tour_description2: Indulás reggel, ebéd valahol, érkezés este
+        tour_description3: Mindenki eredei túrának megfelelő öltözékben jöjjön!
+        tour_type: ökotúra
+        tour_location: Zemplém megye
+        tour_start: "2021-09-03T06:00:00.000Z"
+        tour_end: "2021-09-03T22:00:00.000Z"
+        travellers: []
+        guide: 60ff40193d9e93055c6c0339
+        image: http://image.jpg
+        
+        
+#######
+    travellerModel:
+      type: object
+      required:
+        - id
+        - first_name
+        - last_name
+        
+      properties: 
+        _id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        age:
+          type: number
+        email:
+          type: string
+        gender:
+          type: string
+        password: 
+          type: string
+        city:
+          type: string
+        street:
+          type: string
+        houseNumber:
+          type: number
+        zip:
+          type: number
+        image:
+          type: string
+        my_tours: 
+         items:
+          type: string
+        role:
+          type: number
+          minimum: 1
+          
+      example:
+        _id: 61004d36f73c4c3460bd05a0
+        first_name: John
+        last_name: Doe
+        age: 20
+        email: johndoe@gmail.com
+        gender: férfi
+        password: jelszó
+        city: Bp
+        street: Ady Endre
+        houseNumber: 2
+        zip: 1211
+        image: http://foto.jpg
+        my_tours: []
+        role: 1
+#######
+    saveTravellerModel:
+      type: object
+      required:
+        - first_name
+        - last_name
+      properties: 
+        first_name:
+          type: string
+        last_name:
+          type: string
+        age:
+          type: number
+        email:
+          type: string
+        gender:
+          type: string
+        password: 
+          type: string
+        city:
+          type: string
+        street:
+          type: string
+        houseNumber:
+          type: number
+        zip:
+          type: number
+        image:
+          type: string
+        my_tours: 
+         items:
+          type: string
+        role:
+          type: number
+          minimum: 1
+      example:
+        first_name: John
+        last_name: Doe
+        age: 20
+        email: johndoe@gmail.com
+        gender: férfi
+        password: jelszó
+        city: Bp
+        street: Ady Endre
+        houseNumber: 2
+        zip: 1211
+        image: http://foto.jpg
+        my_tours: []
+        role: 1
+#######
+    guideModel:
+      type: object
+      required:
+        - id
+        - first_name
+        - last_name
+        
+      properties: 
+        _id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        age:
+          type: number
+        description1:
+          type: string
+        description2:
+          type: string
+        image:
+          type: string
+        tours: 
+         items:
+          type: string
+          
+      example:
+        _id: 61004d36f73c4c3460bd05a0
+        first_name: John
+        last_name: Doe
+        age: 20
+        description1: Jellemzése a túravezetőnek
+        description2: Önvallomása a túravezetőnek
+        image: http://foto.jpg
+        tours: []
+        
+#######
+    saveGuideModel:
+      type: object
+      required:
+        - first_name
+        - last_name
+      properties: 
+        first_name:
+          type: string
+        last_name:
+          type: string
+        age:
+          type: number
+        description1:
+          type: string
+        description2:
+          type: string
+        image:
+          type: string
+        tours: 
+         items:
+          type: string
+          
+      example:
+        first_name: John
+        last_name: Doe
+        age: 20
+        description1: Jellemzése a túravezetőnek
+        description2: Önvallomása a túravezetőnek
+        image: http://foto.jpg
+        tours: []
+#######      
+    loginModel:
+      type: object
+      required:
+        - email
+        - password
+        
+      properties: 
+        email:
+          type: string
+        password:
+          type: string
+      
+      example:
+        email: admin@admin.com
+        password: admin
+########
+    refreshModel:
+      type: object
+      required:
+        - refreshToken
+        
+      properties: 
+        refreshToken:
+          type: string
+      
+      example:
+        refreshToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTWluZGVuaGF0w7MiLCJpZCI6IjYxMDU3M2FlMjkyY2IzM2QyY2ZjOTg5NiIsInJvbGUiOjMsImlhdCI6MTYyODQzMjY2MX0.dMp7H8ePNeGJwvFeceK0wdfMap16RgWHXt3AAOJibtY
+      
+      
+      
+      
+      

@@ -1,0 +1,44 @@
+<div class="container mx-auto p-2 px-md-3" *ngIf="selectedPlace">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="col-12 text-center mt-3 mb-3 p-1 p-md-3 shadow rounded">{{selectedPlace.name}}</h2>
+
+      <div class="container-fluid shadow rounded mx-0 my-3 p-md-3">
+        <div class="row">
+          <h3 class="col-12 text-center">{{selectedPlace.header1}}</h3>
+          <div class="col-lg-3">
+            <img [src]="selectedPlace.img1" alt="">
+          </div>
+          <div class="col-lg-9">
+            <p>{{selectedPlace.description1}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid shadow rounded mx-0 my-3 p-md-3">
+        <div class="row">
+        <h3 class="col-12 text-center">{{selectedPlace.header2}}</h3>
+        <div class="col-lg-9">
+          <p>{{selectedPlace.description2}}</p>
+        </div>
+        <div class="col-lg-3">
+          <img [src]="selectedPlace.img2" alt="">
+        </div>
+      </div>
+      </div>
+
+      <div class="container-fluid shadow rounded mx-0 my-3 p-md-3">
+        <div class="row">
+        <h3 class="col-12 text-center">{{selectedPlace.header3}}</h3>
+        <div class="col-lg-3">
+          <img [src]="selectedPlace.img3" alt="">
+        </div>
+        <div class="col-lg-9">
+          <p>{{selectedPlace.description3}}</p>
+        </div>
+      </div>
+      </div>
+
+    </div>
+  </div>
+</div>

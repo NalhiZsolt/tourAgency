@@ -1,0 +1,467 @@
+@use '../../../assets/mixins' as m;
+
+.container-md {
+  @include m.glassContainer();
+}
+
+tr {
+  border-radius: 10px;
+
+}
+td {
+  background: transparent;
+  border: 1px solid transparent;
+  overflow: hidden;
+  transition: 0.2s;
+}
+td:hover{
+  background: rgba(255,255,255,0.2) !important;
+  cursor: pointer;
+}
+
+.table-container {
+  @include m.glassContainer();
+
+
+}
+
+td h6{
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+  color: whitesmoke;
+  text-decoration: none;
+  transition: 0.2s;
+}
+td:hover h6{
+  color: #222;
+  text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+  cursor: pointer;
+}
+
+.terkep-wrapper {
+  position: relative;
+}
+
+.terkep-wrapper img {
+  width: 100%;
+
+  opacity: 0;
+}
+
+.terkep-wrapper .csongradi {
+  position: absolute;
+  display: none;
+}
+
+.terkep-wrapper .hodmezo {
+  transform: scale(50%);
+  position: absolute;
+  display: none;
+}
+
+
+.terkep-wrapper .kisteleki {
+  transform: scale(50%);
+  position: absolute;
+  display: none;
+}
+.terkep-wrapper .makoi {
+  transform: scale(50%);
+  position: absolute;
+  display: none;
+}
+.terkep-wrapper .morahalmi {
+  transform: scale(50%);
+  display: none;
+}
+.terkep-wrapper .szegedi {
+  transform: scale(50%);
+  position: absolute;
+  display: none;
+}
+.terkep-wrapper .szentesi {
+  transform: scale(50%);
+  position: absolute;
+  display: none;
+}
+.terkep-wrapper .csongrad {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ffdc17;
+  border-radius: 50%;
+  display: none;
+}
+.terkep-wrapper .hodmezovasarhely {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ffdc17;
+  border-radius: 50%;
+  display: none;
+}
+.terkep-wrapper .mako {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ffdc17;
+  border-radius: 50%;
+  display: none;
+}
+.terkep-wrapper .morahalom {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ffdc17;
+  border-radius: 50%;
+  display: none;
+}
+.terkep-wrapper .opusztaszer {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ffdc17;
+  border-radius: 50%;
+  display: none;
+}
+.terkep-wrapper .szeged {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ffdc17;
+  border-radius: 50%;
+  display: none;
+}
+.terkep-wrapper .szentes {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ffdc17;
+  border-radius: 50%;
+  display: none;
+}
+
+
+
+@media only screen and (min-width: 993px) {
+  .terkep-wrapper .csongrad {
+    width: 14px;
+    height: 14px;
+    top: 50px;
+    left: 200px;
+    display: block;
+  }
+  .terkep-wrapper .szentes {
+    width: 14px;
+    height: 14px;
+    top: 80px;
+    left: 235px;
+    display: block;
+  }
+  .terkep-wrapper .opusztaszer {
+    width: 14px;
+    height: 14px;
+    top: 170px;
+    left: 160px;
+    display: block;
+  }
+  .terkep-wrapper .hodmezovasarhely {
+    width: 14px;
+    height: 14px;
+    top: 220px;
+    left: 270px;
+    display: block;
+  }
+  .terkep-wrapper .morahalom {
+    width: 14px;
+    height: 14px;
+    top: 320px;
+    left: 90px;
+    display: block;
+  }
+  .terkep-wrapper .szeged {
+    width: 14px;
+    height: 14px;
+    top: 300px;
+    left: 200px;
+    display: block;
+  }
+  .terkep-wrapper .mako {
+    width: 14px;
+    height: 14px;
+    top: 320px;
+    left: 320px;
+    display: block;
+  }
+
+
+
+  .terkep-wrapper img {
+    width: 100%;
+    display: block;
+  }
+  .terkep-wrapper .csongradi {
+    transform: scale(23%);
+    top: -218px;
+    left: -18px;
+    display: block;
+  }
+
+  .terkep-wrapper .hodmezo {
+    transform: scale(44%);
+    position: absolute;
+    top: 38px;
+    left: 90px;
+    display: block;
+  }
+  .terkep-wrapper .szentesi {
+    transform: scale(42%);
+    position: absolute;
+    top: -113px;
+    left: 84px;
+
+    display: block;
+  }
+  .terkep-wrapper .kisteleki {
+    transform: scale(38%);
+    position: absolute;
+    top: 28px;
+    left: -58px;
+    display: block;
+  }
+  .terkep-wrapper .szegedi {
+    transform: scale(41.8%);
+    position: absolute;
+    top: 40px;
+    left: 9px;
+
+    display: block;
+  }
+  .terkep-wrapper .makoi {
+    transform: scale(45%);
+    position: absolute;
+    top: 144px;
+    left: 152px;
+    display: block;
+  }
+
+  .terkep-wrapper .morahalmi {
+    transform: scale(36%);
+    position: absolute;
+    top: 93px;
+    left: -114px;
+    display: block;
+  }
+
+
+
+}
+@media only screen and (min-width: 1200px) {
+  .terkep-wrapper .csongrad {
+    width: 16px;
+    height: 16px;
+    top: 60px;
+    left: 240px;
+    display: block;
+  }
+  .terkep-wrapper .szentes {
+    width: 16px;
+    height: 16px;
+    top: 100px;
+    left: 280px;
+    display: block;
+  }
+  .terkep-wrapper .opusztaszer {
+    width: 16px;
+    height: 16px;
+    top: 205px;
+    left: 195px;
+    display: block;
+  }
+  .terkep-wrapper .hodmezovasarhely {
+    width: 16px;
+    height: 16px;
+    top: 270px;
+    left: 325px;
+    display: block;
+  }
+  .terkep-wrapper .morahalom {
+    width: 16px;
+    height: 16px;
+    top: 385px;
+    left: 105px;
+    display: block;
+  }
+  .terkep-wrapper .szeged {
+    width: 16px;
+    height: 16px;
+    top: 360px;
+    left: 230px;
+    display: block;
+  }
+  .terkep-wrapper .mako {
+    width: 16px;
+    height: 16px;
+    top: 385px;
+    left: 390px;
+    display: block;
+  }
+
+
+  .terkep-wrapper .csongradi {
+    transform: scale(28%);
+    top: -201px;
+    left: 18px;
+  }
+  .terkep-wrapper .hodmezo {
+    transform: scale(53%);
+    position: absolute;
+    top: 82px;
+    left: 149px;
+    display: block;
+  }
+  .terkep-wrapper .szentesi {
+    transform: scale(51%);
+    position: absolute;
+    top: -95px;
+    left: 142px;
+    display: block;
+  }
+  .terkep-wrapper .kisteleki {
+    transform: scale(46%);
+    position: absolute;
+    top: 67px;
+    left: -30px;
+    display: block;
+  }
+  .terkep-wrapper .szegedi {
+    transform: scale(50%);
+    position: absolute;
+    top: 99px;
+    left: 50px;
+    display: block;
+  }
+  .terkep-wrapper .makoi {
+    transform: scale(54%);
+    position: absolute;
+    top: 208px;
+    left: 224px;
+    display: block;
+  }
+  .terkep-wrapper .morahalmi {
+    transform: scale(44%);
+    position: absolute;
+    top: 156px;
+    left: -99px;
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .terkep-wrapper .csongrad {
+    width: 20px;
+    height: 20px;
+    top: 70px;
+    left: 275px;
+    display: block;
+  }
+  .terkep-wrapper .szentes {
+    width: 20px;
+    height: 20px;
+    top: 115px;
+    left: 328px;
+    display: block;
+  }
+  .terkep-wrapper .opusztaszer {
+    width: 20px;
+    height: 20px;
+    top: 240px;
+    left: 230px;
+    display: block;
+  }
+  .terkep-wrapper .hodmezovasarhely {
+    width: 20px;
+    height: 20px;
+    top: 305px;
+    left: 380px;
+    display: block;
+  }
+  .terkep-wrapper .morahalom {
+    width: 20px;
+    height: 20px;
+    top: 450px;
+    left: 125px;
+    display: block;
+  }
+  .terkep-wrapper .szeged {
+    width: 20px;
+    height: 20px;
+    top: 420px;
+    left: 275px;
+    display: block;
+  }
+  .terkep-wrapper .mako {
+    width: 20px;
+    height: 20px;
+    top: 450px;
+    left: 450px;
+    display: block;
+  }
+
+  .terkep-wrapper .csongradi {
+
+    transform: scale(33%);
+    top: -185px;
+    left: 54px;
+  }
+  .terkep-wrapper .hodmezo {
+    transform: scale(62%);
+    position: absolute;
+    top: 125px;
+    left: 206px;
+    display: block;
+  }
+  .terkep-wrapper .szentesi {
+    transform: scale(59%);
+    position: absolute;
+    top: -77px;
+    left: 198px;
+
+    display: block;
+  }
+  .terkep-wrapper .kisteleki {
+    transform: scale(54%);
+    position: absolute;
+    top: 106px;
+    left: -2px;
+    display: block;
+  }
+  .terkep-wrapper .szegedi {
+    transform: scale(59%);
+    position: absolute;
+    top: 157px;
+    left: 92px;
+
+    display: block;
+  }
+  .terkep-wrapper .makoi {
+    transform: scale(63.2%);
+    position: absolute;
+    top: 270px;
+    left: 294px;
+    display: block;
+  }
+  .terkep-wrapper .morahalmi {
+    filter: invert(0.2) sepia(0.5) saturate(7) hue-rotate(360deg) brightness(1.2);
+    transform: scale(51.5%);
+    position: absolute;
+    top: 218px;
+    left: -83px;
+    display: block;
+  }
+}
+
+.terkep-wrapper .csongradi-inner:hover  {
+ filter: invert(0.2) sepia(0.5) saturate(7) hue-rotate(360deg) brightness(1.2);
+ cursor: pointer;
+}
+

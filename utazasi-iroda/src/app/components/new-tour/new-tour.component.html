@@ -1,0 +1,112 @@
+<div class="container-md my-4 p-4">
+  <div class="row">
+    <form class="form  px-4 py-3 form-group col-12" [formGroup]="newTourForm" (ngSubmit)="saveNewTour()">
+      <label class="form-label mt-3" for="tour_title"><p>Kirándulás megnevezése:</p></label>
+      <input class="form-control" type="text" id="tour_title" formControlName="tour_title">
+      <small class="text-warning fw-bold"
+        *ngIf="newTourForm.get('tour_title').invalid && newTourForm.controls.tour_title.dirty">Normál cím szükséges!</small>
+
+      <label class="form-label d-block mt-3" for="tour_description"><p>Leírás:</p></label>
+      <textarea class="form-control" id="tour_description" formControlName="tour_description" cols="30"
+        rows="5"></textarea>
+      <small class="text-warning fw-bold"
+        *ngIf="newTourForm.get('tour_description').invalid && newTourForm.controls.tour_description.dirty">Normál leírás szükséges!</small>
+
+      <label class="form-label d-block mt-3" for="tour_description2"><p>Leírás2:</p></label>
+      <textarea class="form-control" id="tour_description2" formControlName="tour_description2" cols="30"
+        rows="5"></textarea>
+      <small class="text-warning fw-bold"
+        *ngIf="newTourForm.get('tour_description2').invalid && newTourForm.controls.tour_description2.dirty">Normál leírás szükséges!</small>
+
+      <label class="form-label d-block mt-3" for="tour_description3"><p>Leírás3:</p></label>
+      <textarea class="form-control" id="tour_description3" formControlName="tour_description3" cols="30"
+        rows="5"></textarea>
+      <small class="text-warning fw-bold"
+        *ngIf="newTourForm.get('tour_description3').invalid && newTourForm.controls.tour_description3.dirty">Normál leírás szükséges!</small>
+      <div class="container-fluid p-0">
+        <div class="row p-0">
+
+          <div class="container-fluid col-md-6">
+            <div class="row ">
+
+              <div class="col-12">
+                <label class="form-label d-block mt-3" for="tour_start"><p>Túra kezdete:</p></label>
+                <input class="form-control" type="datetime-local" id="tour_start" formControlName="tour_start">
+                <small class="text-warning fw-bold"
+                  *ngIf="newTourForm.get('tour_start').invalid && newTourForm.controls.tour_start.dirty">Hiba!</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="container-fluid col-md-6">
+            <div class="row">
+              <div class="col-12">
+                <label class="form-label d-block mt-3" for="tour_end"><p>Túra vége:</p></label>
+                <input class="form-control" type="datetime-local" id="tour_end" formControlName="tour_end">
+                <small class="text-warning fw-bold"
+                  *ngIf="newTourForm.get('tour_end').invalid && newTourForm.controls.tour_end.dirty">Hiba!</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <label class="form-label d-block mt-3" for="image"><p>Kép URL-je:</p></label>
+      <input class="form-control" type="text" id="image" formControlName="image">
+      <small class="text-warning fw-bold"
+        *ngIf="newTourForm.get('image').invalid && newTourForm.controls.image.dirty">Valós url cím szükséges!</small>
+
+      <div class="container-fluid p-0">
+        <div class="row p-0">
+          <div class="container-fluid col-md-4">
+            <div class="row ">
+              <div class="col-12">
+
+                <label class="form-label d-block mt-3" for="tour_type"><p>Túra tipusa:</p></label>
+                <select class="form-select" id="tour_type" formControlName="tour_type">
+                  <option *ngFor="let tourType of this.tourTypeList" [value]="tourType.value">{{tourType.name}}
+                  </option>
+                </select>
+                <small class="text-warning fw-bold"
+                  *ngIf="newTourForm.get('tour_type').invalid && newTourForm.controls.tour_type.touched">Választania kell egy tipust!</small>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="container-fluid col-md-4">
+            <div class="row ">
+              <div class="col-12">
+
+                <label class="form-label d-block mt-3" for="tour_location"><p>Túra helye:</p></label>
+                <select class="form-select" id="tour_location" formControlName="tour_location">
+                  <option *ngFor="let tourLocation of tourLocations" [value]="tourLocation.name">{{tourLocation.name}}</option>
+                  <option *ngFor="let tourCity of tourCities" [value]="tourCity.name">{{tourCity.name}}</option>
+
+                </select>
+                <small class="text-warning fw-bold"
+                  *ngIf="newTourForm.get('tour_location').invalid && newTourForm.controls.tour_location.touched">Választania kell egy tipust!</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="container-fluid col-md-4">
+            <div class="row ">
+              <div class="col-12">
+                <label class="form-label d-block mt-3" for="guide"><p>Túravezető:</p></label>
+                <select class="form-select" id="guide" *ngIf="guideList" formControlName="guide">
+                  <option *ngFor="let guide of this.guideList" [value]="guide._id">{{guide.last_name}} {{guide.first_name}}</option>
+                </select>
+                <small class="text-warning fw-bold"
+                  *ngIf="newTourForm.get('guide').invalid && newTourForm.controls.guide.touched">Választania kell egy túravezetőt!</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn my-3">
+        <button class="btn btn-inner py-4 " [disabled]="newTourForm.invalid"><p class="mt-1">Mentés</p></button>
+      </div>
+    </form>
+  </div>
+</div>

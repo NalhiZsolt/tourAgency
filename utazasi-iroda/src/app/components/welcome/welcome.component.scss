@@ -1,0 +1,149 @@
+@use '../../../assets/mixins' as m;
+
+.container-md, .rounded {
+  @include m.glassContainer();
+}
+
+
+img {
+  width: 100%
+}
+.container-md {
+  background-color: #fefefe75;
+
+}
+.loginLink {
+  text-decoration: none;
+}
+
+.gastro-card, .varosnezo-card, .bicikli-card, .lovas-card, .vizi-card, .oko-card{
+  background-color: #fefefe75;
+}
+.card-container {
+  height: 250px
+}
+.gastro-card .card1 {
+  background-image: url(https://albaniakincsei.hu/uploads/site2097/15631982505d2c832af3b62_555x555.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+.gastro-card .card2 {
+  background-image: url(https://i.ccdn.hu/acm/10/243773/l4.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+.gastro-card .card3 {
+  background-image: url(https://cdn.nwmgroups.hu/s/img/i/1710/201710311036.jpg?w=543&h=407);
+  background-position: center center;
+  background-size: cover;
+}
+.gastro-card .card4 {
+  background-image: url(https://www.baraka.hu/image/1366x910/20118.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+
+.varosnezo-card .card1 {
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/National_Theatre_of_Szeged.jpg/1280px-National_Theatre_of_Szeged.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+.varosnezo-card .card2 {
+  background-image: url(https://i.szalas.hu/pois/2827/original/33834.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+.varosnezo-card .card3 {
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Fekete_Sas_Sz%C3%A1ll%C3%B3._-_Csongr%C3%A1d_megye%2C_H%C3%B3dmez%C5%91v%C3%A1s%C3%A1rhely%2C_Kossuth_t%C3%A9r_3.jpg/1280px-Fekete_Sas_Sz%C3%A1ll%C3%B3._-_Csongr%C3%A1d_megye%2C_H%C3%B3dmez%C5%91v%C3%A1s%C3%A1rhely%2C_Kossuth_t%C3%A9r_3.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+.varosnezo-card .card4 {
+  background-image: url(https://kosztamuzeum.hu/wp-content/uploads/2018/10/cropped-kosztajozsefmuzeum_epulete-1.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+
+.bicikli-card .card1 {
+  background-image: url(https://www.tura-baratok.hu/_data/blog_1560781084.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+.bicikli-card .card2 {
+  background-image: url(https://www.berekhorgaszpark.hu/sparta/images/galeria/17/kerekpar-tura-2.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+.bicikli-card .card3 {
+  background-image: url(https://www.mozgasvilag.hu/media_mv/10059/2087/other/81489-Drauradweg_G_139_600.JPG);
+  background-position: center center;
+  background-size: cover;
+}
+.bicikli-card .card4 {
+  background-image: url(https://cdn.nwmgroups.hu/s/img/i/1206/20120618-steg-bicikli-kerekpar-tura3.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+
+.lovas-card .card1 {
+  background-image: url(http://m.cdn.blog.hu/it/itthonadelalfoldon/image/_DSC7964.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+.lovas-card .card2 {
+  background-image: url(https://thummerer.hu/wp-content/uploads/2018/03/Lovast%C3%BAra-1024x650.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+.lovas-card .card3 {
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-1lo4q5Hj6_Ol9mde-vOLEjuvXkhwDmrzU-DsZ9zBcDEslB2GypmMAxsvC7GUsCBxu24&usqp=CAU);
+  background-position: center center;
+  background-size: cover;
+}
+.lovas-card .card4 {
+  background-image: url(http://www.lovasok.hu/images/dszt600.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+.vizi-card .card1 {
+  background-image: url(https://felfedezok.hu/wp-content/uploads/2021/02/kcrab_raba_kenutura_6-scaled.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+.vizi-card .card2 {
+  background-image: url(http://www.kenutura.hu/~/getfile/d43e47a3-360f-46fa-bd24-5a38700634bb/kenutura.aspx);
+  background-position: center center;
+  background-size: cover;
+}
+.vizi-card .card3 {
+  background-image: url(https://www.vidra-vizitura.hu/wp-content/uploads/2019/01/heviz_patak_vizitura_170.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+.vizi-card .card4 {
+  background-image: url(https://vizitura.com/wp-content/uploads/sites/3/2015/03/vizitura-55-400x240.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+.oko-card .card1 {
+  background-image: url(https://csodalatosmagyarorszag.hu/wp-content/uploads/2020/10/martely-hodmezovasarhely.holt-tisza-tajvedelmi-korzet5-csodalatosmagyarorszag.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+.oko-card .card2 {
+  background-image: url(https://images.unsplash.com/photo-1594258877360-746073f34c24?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80);
+  background-position: center center;
+  background-size: cover;
+}
+.oko-card .card3 {
+  background-image: url(https://images.unsplash.com/photo-1572196459043-5c39f99a7555?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);
+  background-position: center center;
+  background-size: cover;
+}
+.oko-card .card4 {
+  background-image: url(https://images.unsplash.com/photo-1450851801052-e509ab036c65?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);
+  background-position: center center;
+  background-size: cover;
+}
+
+
